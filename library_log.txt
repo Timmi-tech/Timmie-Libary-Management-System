@@ -147,3 +147,13 @@
 [2025-03-16 09:25:56] Book return processed for record ID: 3
 [2025-03-16 09:25:56] Retrieved member: tom
 [2025-03-16 09:25:56] Book return processed for record ID: 3
+[2025-03-16 10:27:14] Added new book: The Stupid Gatsby
+[2025-03-16 10:27:14] Added new book: To Kill a Mockingbird
+[2025-03-16 10:27:14] Added new member: tomiwa ope
+[2025-03-16 10:27:14] Added new member: ope adeyemi
+[2025-03-16 10:28:10] Database connection established successfully
+[2025-03-16 10:28:10] Retrieved 3 books
+[2025-03-16 10:28:10] Books exported to CSV
+[2025-03-16 10:28:50] Retrieved 1 members
+[2025-03-16 10:28:56] Retrieved member: tom
+[2025-03-16 10:29:08] Retrieved 3 books
