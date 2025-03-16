@@ -85,8 +85,11 @@ public class LibraryMenu {
             System.out.println("3. Delete a book");
             System.out.println("4. Search book by title");
             System.out.println("5. Search books by author");
-            System.out.println("6. View all books");
-            System.out.println("7. Back to main menu");
+            System.out.println("6. sort books by title");
+            System.out.println("7. sort books by author");
+            System.out.println("8. sort books by genre");
+            System.out.println("9. View all books");
+            System.out.println("10. Back to main menu");
             System.out.print("Enter your choice: ");
             
             int choice = getIntInput();
@@ -108,9 +111,18 @@ public class LibraryMenu {
                     searchBooksByAuthor();
                     break;
                 case 6:
-                    viewAllBooks();
+                    sortBooksByTitle();
                     break;
                 case 7:
+                    sortBooksByAuthor();
+                    break;
+                case 8:
+                    sortBooksByGenre();
+                    break;
+                case 9:
+                    viewAllBooks();
+                    break;
+                case 10:
                     back = true;
                     break;
                 default:
@@ -154,7 +166,7 @@ public class LibraryMenu {
         }
         
         if (book == null) {
-            System.out.println("❌ Book not found!");
+            System.out.println(" Book not found!");
             return;
         }
         
@@ -183,9 +195,9 @@ public class LibraryMenu {
         int copies = copiesStr.isEmpty() ? book.getAvailableCopies() : Integer.parseInt(copiesStr);
         
         if (bookManager.updateBook(bookId, title, author, genre, copies)) {
-            System.out.println("✅ Book updated successfully!");
+            System.out.println(" Book updated successfully!");
         } else {
-            System.out.println("❌ Failed to update book!");
+            System.out.println(" Failed to update book!");
         }
     }
 
@@ -197,9 +209,9 @@ public class LibraryMenu {
         int bookId = getIntInput();
         
         if (bookManager.deleteBook(bookId)) {
-            System.out.println("✅ Book deleted successfully!");
+            System.out.println(" Book deleted successfully!");
         } else {
-            System.out.println("❌ Cannot delete book! It might be borrowed or not found.");
+            System.out.println(" Cannot delete book! It might be borrowed or not found.");
         }
     }
 
@@ -216,7 +228,7 @@ public class LibraryMenu {
             System.out.println("\nFound Book:");
             displayBook(book);
         } else {
-            System.out.println("❌ No book found with that title!");
+            System.out.println(" No book found with that title!");
         }
     }
 
@@ -235,7 +247,55 @@ public class LibraryMenu {
                 displayBook(book);
             }
         } else {
-            System.out.println("❌ No books found by that author!");
+            System.out.println(" No books found by that author!");
+        }
+    }
+    private void sortBooksByTitle() {
+        System.out.println("\n----- Sort Books by Title -----");
+        List<Book> sortedBooks = bookManager.getBooksSortedByTitle();
+
+        if (sortedBooks.isEmpty()) {
+            System.out.println(" No books in the library!");
+            return;
+        }
+
+        System.out.println("\nID | Title | Author | Genre | Available Copies");
+        System.out.println("------------------------------------------");
+
+        for (Book book : sortedBooks) {
+            displayBook(book);
+        }
+    }
+    private void sortBooksByAuthor() {
+        System.out.println("\n----- Sort Books by Author -----");
+        List<Book> sortedBooks = bookManager.getBooksSortedByAuthor();
+
+        if (sortedBooks.isEmpty()) {
+            System.out.println(" No books in the library!");
+            return;
+        }
+
+        System.out.println("\nID | Title | Author | Genre | Available Copies");
+        System.out.println("------------------------------------------");
+
+        for (Book book : sortedBooks) {
+            displayBook(book);
+        }
+    }
+    private void sortBooksByGenre() {
+        System.out.println("\n----- Sort Books by Genre -----");
+        List<Book> sortedBooks = bookManager.getBooksSortedByGenre();
+
+        if (sortedBooks.isEmpty()) {
+            System.out.println(" No books in the library!");
+            return;
+        }
+
+        System.out.println("\nID | Title | Author | Genre | Available Copies");
+        System.out.println("------------------------------------------");
+
+        for (Book book : sortedBooks) {
+            displayBook(book);
         }
     }
 

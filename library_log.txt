@@ -157,3 +157,15 @@
 [2025-03-16 10:28:50] Retrieved 1 members
 [2025-03-16 10:28:56] Retrieved member: tom
 [2025-03-16 10:29:08] Retrieved 3 books
+[2025-03-16 11:32:40] Added new book: The Stupid Gatsby
+[2025-03-16 11:32:40] Added new book: To Kill a Mockingbird
+[2025-03-16 11:32:40] Added new member: tomiwa ope
+[2025-03-16 11:32:40] Added new member: ope adeyemi
+[2025-03-16 11:34:33] Book borrowed: The Stupid Gatsby by member: ope adeyemi
+[2025-03-16 11:34:44] Book returned: The Stupid Gatsby
+[2025-03-16 11:40:38] Added new book: The Stupid Gatsby
+[2025-03-16 11:40:38] Added new book: To Kill a Mockingbird
+[2025-03-16 11:40:38] Added new member: tomiwa ope
+[2025-03-16 11:40:38] Added new member: ope adeyemi
+[2025-03-16 11:41:25] Updated book: The Stupid Gatsby
+[2025-03-16 11:41:43] Updated book: asdfdsa
