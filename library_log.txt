@@ -1,0 +1,106 @@
+[2025-03-15 15:12:23] Exiting Library Management System...
+[2025-03-15 15:12:47] Database connection established successfully
+[2025-03-15 15:12:47] Book added: TOMIWA BOOK by tom
+[2025-03-15 15:12:47] Added Book: TOMIWA BOOK
+[2025-03-15 15:12:50] Retrieved 1 books
+[2025-03-15 15:13:07] Book updated: TOMIWA BOOK
+[2025-03-15 15:13:07] Updated Book ID: 1
+[2025-03-15 15:13:39] Member added: Ayotomiwa
+[2025-03-15 15:13:39] Added Member: Ayotomiwa
+[2025-03-15 15:13:42] Retrieved 1 members
+[2025-03-15 15:13:47] Retrieved member: Ayotomiwa
+[2025-03-15 15:13:50] Retrieved 1 members
+[2025-03-15 15:14:19] Retrieved member: Ayotomiwa
+[2025-03-15 15:14:21] Member deleted: 1
+[2025-03-15 15:14:21] Deleted Member ID: 1
+[2025-03-15 15:14:24] Retrieved 0 members
+[2025-03-15 15:15:06] Exiting Library Management System...
+[2025-03-15 15:24:57] Database connection established successfully
+[2025-03-15 15:24:57] Book added: tom by ujgd
+[2025-03-15 15:24:57] Added Book: tom
+[2025-03-15 15:25:11] DEBUG: Executing search query with keyword: tom
+[2025-03-15 15:25:11] INFO: Search completed. Found 2 books matching 'tom'
+[2025-03-15 15:25:11] Book search performed with keyword: tom
+[2025-03-15 15:25:44] Retrieved 2 books
+[2025-03-15 15:27:24] Member added: tom
+[2025-03-15 15:27:24] Added Member: tom
+[2025-03-15 15:27:38] Retrieved member: tom
+[2025-03-15 15:27:38] Error borrowing book: ERROR: function curdate() does not exist
+  Hint: No function matches the given name and argument types. You might need to add explicit type casts.
+  Position: 81
+[2025-03-15 15:27:38] Error processing borrowing: Failed to borrow book: ERROR: function curdate() does not exist
+  Hint: No function matches the given name and argument types. You might need to add explicit type casts.
+  Position: 81
+[2025-03-15 15:30:20] Database connection established successfully
+[2025-03-15 15:30:20] Retrieved member: tom
+[2025-03-15 15:30:20] Error borrowing book: ERROR: syntax error at or near "("
+  Position: 93
+[2025-03-15 15:30:20] Error processing borrowing: Failed to borrow book: ERROR: syntax error at or near "("
+  Position: 93
+[2025-03-15 15:31:55] Database connection established successfully
+[2025-03-15 15:31:56] Retrieved member: tom
+[2025-03-15 15:31:56] Book (ID: 1) borrowed by member (ID: 2)
+[2025-03-15 15:31:56] Book (ID: 1) borrowed by member (ID: 2)
+[2025-03-15 15:32:02] Retrieved 1 borrowing records
+[2025-03-15 15:32:02] Database connection established successfully
+[2025-03-15 15:32:02] Retrieved member: tom
+[2025-03-15 15:32:02] Retrieved and displayed 1 borrowing records
+[2025-03-15 15:32:15] Retrieved borrowing record with ID: 1
+[2025-03-15 15:32:15] Database connection established successfully
+[2025-03-15 15:32:15] Book return processed for record ID: 1
+[2025-03-15 15:32:15] Retrieved member: tom
+[2025-03-15 15:32:15] Book return processed for record ID: 1
+[2025-03-15 15:32:19] Retrieved 1 borrowing records
+[2025-03-15 15:32:19] Database connection established successfully
+[2025-03-15 15:32:19] Retrieved member: tom
+[2025-03-15 15:32:19] Retrieved and displayed 1 borrowing records
+[2025-03-15 15:32:22] Retrieved 1 borrowing records
+[2025-03-15 15:32:22] Database connection established successfully
+[2025-03-15 15:32:22] Retrieved member: tom
+[2025-03-15 15:32:22] Retrieved and displayed 1 borrowing records
+[2025-03-15 15:32:39] Retrieved borrowing record with ID: 1
+[2025-03-15 15:46:35] Database connection established successfully
+[2025-03-15 15:46:35] Retrieved 1 returned records
+[2025-03-15 15:46:35] Database connection established successfully
+[2025-03-15 15:46:35] Retrieved member: tom
+[2025-03-15 15:46:35] Retrieved and displayed 1 returned records
+[2025-03-15 15:46:48] Retrieved member: tom
+[2025-03-15 15:46:48] Book (ID: 1) borrowed by member (ID: 2)
+[2025-03-15 15:46:48] Book (ID: 1) borrowed by member (ID: 2)
+[2025-03-15 15:46:52] Retrieved 1 returned records
+[2025-03-15 15:46:52] Database connection established successfully
+[2025-03-15 15:46:52] Retrieved member: tom
+[2025-03-15 15:46:52] Retrieved and displayed 1 returned records
+[2025-03-15 15:47:01] Book added: djdjd by hdjhd
+[2025-03-15 15:47:01] Added Book: djdjd
+[2025-03-15 15:47:04] Retrieved 3 books
+[2025-03-15 16:14:54] Database connection established successfully
+[2025-03-15 16:14:54] Retrieved 3 books
+[2025-03-15 16:14:54] Books exported to CSV
+[2025-03-15 16:17:15] Database connection established successfully
+[2025-03-15 16:17:15] Retrieved 1 members
+[2025-03-15 16:17:15] Members exported to CSV successfully
+[2025-03-15 16:17:32] Database connection established successfully
+[2025-03-15 16:17:33] Retrieved 3 books
+[2025-03-15 16:17:33] Books exported to CSV successfully
+[2025-03-15 16:17:43] Retrieved 1 members
+[2025-03-15 16:17:43] Members exported to CSV successfully
+[2025-03-15 16:19:28] Database connection established successfully
+[2025-03-15 16:19:28] Retrieved 3 books
+[2025-03-15 16:19:36] Retrieved 1 members
+[2025-03-15 16:19:36] Members exported to CSV successfully
+[2025-03-15 16:20:01] Database connection established successfully
+[2025-03-15 16:20:01] Retrieved 1 members
+[2025-03-15 16:20:01] Members exported to CSV
+[2025-03-16 07:24:55] Database connection established successfully
+[2025-03-16 07:24:55] Retrieved 1 members
+[2025-03-16 07:24:55] Members exported to CSV
+[2025-03-16 07:25:35] Database connection established successfully
+[2025-03-16 07:25:35] Retrieved 3 books
+[2025-03-16 07:25:35] Books exported to CSV
+[2025-03-16 07:27:50] Database connection established successfully
+[2025-03-16 07:27:50] Retrieved 1 members
+[2025-03-16 07:27:50] Members exported to CSV
+[2025-03-16 07:30:47] Database connection established successfully
+[2025-03-16 07:30:47] Retrieved 1 members
+[2025-03-16 07:30:47] Members exported to CSV
