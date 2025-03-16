@@ -1,4 +1,4 @@
-# Timmie library Management System
+# Timmie Library Management System
 
 A comprehensive Java-based library Management System designed to manage books, members, and borrowing records. Built using JDBC with the DAO pattern, file handling, and Java Collections Framework.
 
