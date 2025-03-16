@@ -20,7 +20,7 @@ public class BookManagement {
         Book book = new Book(bookId, title, author, genre, copies);
         library.books.add(book);  // Add to Library's book list
         Logger.log("Added new book: " + book.getTitle());
-        System.out.println("✅ Book added successfully!");
+        System.out.println(" Book added successfully!");
         return book;
     }
      // Update book details

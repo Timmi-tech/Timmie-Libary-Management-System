@@ -68,13 +68,13 @@ public class Book {
     @Override
     public String toString() {
         return String.format(
-        "📖 Book Details:\n" +
+        " Book Details:\n" +
         "--------------------------\n" +
-        "📌 ID            : %d\n" +
-        "📚 Title         : %s\n" +
-        "✍️  Author        : %s\n" +
-        "🎭 Genre         : %s\n" +
-        "📦 Available     : %d copies\n" +
+        " ID            : %d\n" +
+        " Title         : %s\n" +
+        " Author        : %s\n" +
+        " Genre         : %s\n" +
+        " Available     : %d copies\n" +
         "--------------------------",
         bookId, title, author, genre, availableCopies
     );

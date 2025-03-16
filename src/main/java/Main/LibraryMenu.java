@@ -8,7 +8,7 @@ public class LibraryMenu {
 
     public static void main(String[] args) {
         while (true) {
-            System.out.println("\n=== 📚 Library Management System ===");
+            System.out.println("\n===  Library Management System ===");
             System.out.println("1. Book Management");
             System.out.println("2. Member Management");
             System.out.println("3. Borrowing Management");
@@ -26,7 +26,7 @@ public class LibraryMenu {
                         bookMenu.bookManagementMenu();
                         break;
                     case 2:
-                        MemeberManagementMenu memberMenu = new MemeberManagementMenu(); // ✅ Fixed typo
+                        MemeberManagementMenu memberMenu = new MemeberManagementMenu(); 
                         memberMenu.memberManagementMenu();
                         break;
                     case 3:
@@ -34,19 +34,19 @@ public class LibraryMenu {
                         borrowingMenu.borrowingManagementMenu();
                         break;
                     case 4:
-                        CsvExportMnagement.exportDataMenu(scanner); // ✅ Pass scanner argument
+                        CsvExportMnagement.exportDataMenu(scanner); 
                         break;
                     case 5:
-                        System.out.println("🚪 Exiting Library Management System...");
+                        System.out.println(" Exiting Library Management System...");
                         Logger.log("Exiting Library Management System...");
                         scanner.close();
                         System.exit(0);
                     default:
-                        System.out.println("❌ Invalid choice! Please try again.");
+                        System.out.println(" Invalid choice! Please try again.");
                         Logger.log("Invalid choice! Please try again.");
                 }
             } else {
-                System.out.println("❌ Invalid input! Please enter a number.");
+                System.out.println(" Invalid input! Please enter a number.");
                 scanner.nextLine(); // Clear invalid input
             }
         }

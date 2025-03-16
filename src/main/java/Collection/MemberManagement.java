@@ -1,13 +1,11 @@
 package Collection;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Iterator;
 import Utils.Logger;
 import Models.Member;
-import Models.Book;
+
 
 public class MemberManagement {
     public Library library;  // Reference to Library
@@ -18,13 +16,6 @@ public class MemberManagement {
     
 //Add a new member to the library
     public Member addMember(String name, String email, String phone) {
-        // Check if member with the same email already exists
-        for (Member member : library.members) {
-            if (member.getEmail().equalsIgnoreCase(email)) {
-                Logger.log("Member with email " + email + " already exists.");
-                return null; // Member with the same email already exists
-            }
-        }
         int memberId = library.nextMemberId++;  // Access nextMemberId from Library
         Member member = new Member(memberId, name, email, phone);
         library.members.add(member);
@@ -33,11 +24,10 @@ public class MemberManagement {
         return member;
     }
     
-    /**
-     * Update member details
-     */
+    
+     // Update member details
     public boolean updateMember(int memberId, String name, String email, String phone) {
-        for (Member member : members) {
+        for (Member member : library.members) {
             if (member.getMemberId() == memberId) {
                 member.setName(name);
                 member.setEmail(email);
@@ -49,16 +39,16 @@ public class MemberManagement {
         return false;
     }
     
-    /**
-     * Delete a member from the library
-     */
+    
+     // Delete a member from the library
+    
     public boolean deleteMember(int memberId) {
         // Check if member has borrowed books
-        if (borrowedBooks.containsValue(memberId)) {
+        if (library.borrowedBooks.containsValue(memberId)) {
             return false; // Can't delete a member with borrowed books
         }
         
-        for (Iterator<Member> iterator = members.iterator(); iterator.hasNext();) {
+        for (Iterator<Member> iterator = library.members.iterator(); iterator.hasNext();) {
             Member member = iterator.next();
             if (member.getMemberId() == memberId) {
                 iterator.remove();
@@ -69,11 +59,10 @@ public class MemberManagement {
         return false;
     }
     
-    /**
-     * Get a member by ID
-     */
+    
+     // Get a member by ID
     public Member getMemberById(int memberId) {
-        for (Member member : members) {
+        for (Member member : library.members) {
             if (member.getMemberId() == memberId) {
                 return member;
             }
@@ -81,11 +70,9 @@ public class MemberManagement {
         return null;
     }
     
-    /**
-     * Get all members in the library
-     */
+     // Get all members in the library
     public List<Member> getAllMembers() {
-        return new ArrayList<>(members);
+        return new ArrayList<>(library.members);
     }
     
 }

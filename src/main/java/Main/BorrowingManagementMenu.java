@@ -6,17 +6,17 @@ import Services.BorrowingService;
 
 public class BorrowingManagementMenu {
     private static Scanner scanner = new Scanner(System.in);
-    /** 🔄 Borrowing Management Menu */
+    /** Borrowing Management Menu */
     void borrowingManagementMenu() {
         
         while (true) {
-            System.out.println("\n=== 🔄 Borrowing Management ===");
+            System.out.println("\n===  Borrowing Management ===");
             System.out.println("1. Borrow Book");
             System.out.println("2. Return Book");
             System.out.println("3. Display Borrowing Records");
             System.out.println("4. Display Borrowing Records by Id");
             System.out.println("5. Display All Returned Records");
-            System.out.println("6. 🔙 Back to Main Menu");
+            System.out.println("6.  Back to Main Menu");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -41,7 +41,7 @@ public class BorrowingManagementMenu {
                 case 6:
                     return; // Go back to Main Menu
                 default:
-                    System.out.println("❌ Invalid choice! Please try again.");
+                    System.out.println(" Invalid choice! Please try again.");
             }
         }
     }

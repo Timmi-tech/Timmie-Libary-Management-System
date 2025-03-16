@@ -16,10 +16,10 @@ public class CsvExportMnagement {
         MemberDao memberDao = new MemberDaoImpl();
 
         while (true) {
-            System.out.println("\n=== 📤 Export Data ===");
+            System.out.println("\n===  Export Data ===");
             System.out.println("1. Export Books to CSV");
             System.out.println("2. Export Members to CSV");
-            System.out.println("3. 🔙 Back to Main Menu");
+            System.out.println("3.  Back to Main Menu");
             System.out.print("Enter your choice: ");
 
             if (scanner.hasNextInt()) { // Check if input exists
@@ -43,16 +43,16 @@ public class CsvExportMnagement {
                             System.err.println("Error exporting members: " + e.getMessage());
                             Logger.log("Failed to export members: " + e.getMessage());
                         }
-                        break; // ✅ Added missing break
+                        break; 
 
                     case 3:
-                        return; // ✅ Back to Main Menu
+                        return; // Go back to Main Menu
 
                     default:
-                        System.out.println("❌ Invalid choice! Please try again.");
+                        System.out.println(" Invalid choice! Please try again.");
                 }
             } else {
-                System.out.println("❌ Invalid input! Please enter a number.");
+                System.out.println(" Invalid input! Please enter a number.");
                 scanner.nextLine(); // Clear invalid input
             }
         }

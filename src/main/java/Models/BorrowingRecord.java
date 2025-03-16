@@ -66,17 +66,19 @@ public class BorrowingRecord {
     public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
-
+    public boolean isReturned() {
+        return returnDate != null;
+    }
     @Override
     public String toString() {
     return String.format(
-        "📄 Borrowing Record:\n" +
+        " Borrowing Record:\n" +
         "---------------------------------\n" +
-        "🆔 Record ID  : %d\n" +
-        "📚 Book ID    : %d\n" +
-        "👤 Member ID  : %d\n" +
-        "📅 Borrowed On: %s\n" +
-        "📆 Return By  : %s\n" +
+        " Record ID  : %d\n" +
+        " Book ID    : %d\n" +
+        " Member ID  : %d\n" +
+        " Borrowed On: %s\n" +
+        " Return By  : %s\n" +
         "---------------------------------",
         recordId, bookId, memberId, borrowDate, returnDate != null ? returnDate : "Not Returned"
     );

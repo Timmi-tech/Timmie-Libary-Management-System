@@ -27,7 +27,7 @@ public class CsvExporter {
                 );
                 writer.newLine();
             }
-            System.out.println("✅ Books exported successfully to " + BOOKS_CSV);
+            System.out.println(" Books exported successfully to " + BOOKS_CSV);
             Logger.log("Books exported to CSV");
         } catch (IOException e) {
             System.err.println("Error exporting books to CSV: " + e.getMessage());
@@ -50,7 +50,7 @@ public class CsvExporter {
                 );
                 writer.newLine();
             }
-            System.out.println("✅ Members exported successfully to " + MEMBERS_CSV);
+            System.out.println(" Members exported successfully to " + MEMBERS_CSV);
             Logger.log("Members exported to CSV");
         } catch (IOException e) {
             System.err.println("Error exporting members to CSV: " + e.getMessage());

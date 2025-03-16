@@ -20,6 +20,8 @@ public class BookDaoImpl implements BookDao {
     private static final String SQL_SELECT_BOOK_BY_ID = "SELECT * FROM books WHERE book_id = ?";
     private static final String SQL_SEARCH_BOOKS_BASE = "SELECT * FROM books WHERE (title LIKE ? OR author LIKE ? OR genre LIKE ?)";
 
+
+    // implement the methods from the interface
     @Override
     public void addBook(Book book) throws DatabaseException {
         PreparedStatement stmt = null;
@@ -170,12 +172,12 @@ public class BookDaoImpl implements BookDao {
         try {
             StringBuilder queryBuilder = new StringBuilder(SQL_SEARCH_BOOKS_BASE);
             
-            // Add filter for available books if requested
+           
             if (onlyAvailable) {
                 queryBuilder.append(" AND available_copies > 0");
             }
             
-            // Add appropriate sorting
+            // Added appropriate sorting
             switch (sortBy.toLowerCase()) {
                 case "title":
                     queryBuilder.append(" ORDER BY title ASC");
@@ -219,13 +221,12 @@ public class BookDaoImpl implements BookDao {
             
         } catch (SQLException e) {
             Logger.log("ERROR: Database error during book search: " + e.getMessage());
-            // Handle specific SQL exceptions differently
             if (e.getSQLState() != null) {
                 if (e.getSQLState().startsWith("08")) {
-                    // Connection error codes typically start with 08
+                    // Connection error in SQL
                     throw new DatabaseException("Database connection issue: " + e.getMessage(), e);
                 } else if (e.getSQLState().startsWith("42")) {
-                    // Syntax error codes typically start with 42
+                    // Syntax error in SQL query
                     throw new DatabaseException("SQL syntax error in search query: " + e.getMessage(), e);
                 } else {
                     throw new DatabaseException("Failed to search books: " + e.getMessage(), e);

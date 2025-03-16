@@ -57,12 +57,12 @@ public class Member {
     @Override
     public String toString() {
         return String.format(
-            "👤 Member Details:\n" +
+            "Member Details:\n" +
             "--------------------------\n" +
-            "🆔 ID      : %d\n" +
-            "📛 Name    : %s\n" +
-            "📧 Email   : %s\n" +
-            "📞 Phone   : %s\n" +
+            " ID      : %d\n" +
+            " Name    : %s\n" +
+            " Email   : %s\n" +
+            " Phone   : %s\n" +
             "--------------------------",
             memberId, name, email, phone
         );

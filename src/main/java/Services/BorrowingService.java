@@ -17,51 +17,126 @@ import Models.Member;
 import Dao.MemberDao;
 import Dao.MemberDaoImpl;
 
+
 public class BorrowingService {
     private static Scanner scanner = new Scanner(System.in);
 
+    // Method to borrow a book from the library
     public static void borrowBook() {
         try {
-            System.out.print("Enter book ID: ");
+            // First, show available books
+            BookDao bookDao = new BookDaoImpl();
+            List<Book> availableBooks = bookDao.getAllBooks().stream()
+                    .filter(book -> book.getAvailableCopies() > 0)
+                    .toList();
+            
+            if (availableBooks.isEmpty()) {
+                System.out.println(" No books available for borrowing");
+                return;
+            }
+            
+            System.out.println("\n===  Available Books for Borrowing ===");
+            System.out.printf("%-5s | %-25s | %-20s | %-15s | %-10s\n", 
+                    "ID", "TITLE", "AUTHOR", "GENRE", "AVAILABLE");
+            System.out.println("-----------------------------------------------------------------------------------------------");
+            
+            for (Book book : availableBooks) {
+                String title = book.getTitle().length() > 22 ? 
+                        book.getTitle().substring(0, 19) + "..." : book.getTitle();
+                String author = book.getAuthor().length() > 17 ? 
+                        book.getAuthor().substring(0, 14) + "..." : book.getAuthor();
+                String genre = book.getGenre().length() > 12 ? 
+                        book.getGenre().substring(0, 9) + "..." : book.getGenre();
+                
+                System.out.printf("%-5d | %-25s | %-20s | %-15s | %-10d\n", 
+                        book.getBookId(), title, author, genre, book.getAvailableCopies());
+            }
+            
+            System.out.print("\nEnter book ID: ");
             String bookIdInput = scanner.nextLine();
             
             int bookId;
             try {
                 bookId = Integer.parseInt(bookIdInput);
             } catch (NumberFormatException e) {
-                System.out.println("❌ Invalid input: Book ID must be a number");
+                System.out.println(" Invalid input: Book ID must be a number");
                 return;
             }
             
-            System.out.print("Enter member ID: ");
+            // Verify book exists and is available
+            Book book = bookDao.getBookById(bookId);
+            if (book == null) {
+                System.out.println(" No book found with ID: " + bookId);
+                return;
+            }
+            
+            if (book.getAvailableCopies() <= 0) {
+                System.out.println(" Sorry, there are no available copies of this book");
+                return;
+            }
+            
+            // Show the selected book details
+            System.out.println("\n=== Selected Book Details ===");
+            System.out.println("Title: " + book.getTitle());
+            System.out.println("Author: " + book.getAuthor());
+            System.out.println("Genre: " + book.getGenre());
+            System.out.println("Available Copies: " + book.getAvailableCopies());
+            
+            // Now show members list
+            MemberDao memberDao = new MemberDaoImpl();
+            List<Member> members = memberDao.getAllMembers();
+            
+            if (members.isEmpty()) {
+                System.out.println(" No members registered in the system");
+                return;
+            }
+            
+            System.out.println("\n=== 👥 Library Members ===");
+            System.out.printf("%-5s | %-20s | %-25s | %-15s\n", 
+                    "ID", "NAME", "EMAIL", "PHONE");
+            System.out.println("--------------------------------------------------------------------------------");
+            
+            for (Member member : members) {
+                String name = member.getName().length() > 17 ? 
+                        member.getName().substring(0, 14) + "..." : member.getName();
+                String email = member.getEmail().length() > 22 ? 
+                        member.getEmail().substring(0, 19) + "..." : member.getEmail();
+                String phone = member.getPhone().length() > 12 ? 
+                        member.getPhone().substring(0, 9) + "..." : member.getPhone();
+                
+                System.out.printf("%-5d | %-20s | %-25s | %-15s\n", 
+                        member.getMemberId(), name, email, phone);
+            }
+            
+            System.out.print("\nEnter member ID: ");
             String memberIdInput = scanner.nextLine();
             
             int memberId;
             try {
                 memberId = Integer.parseInt(memberIdInput);
             } catch (NumberFormatException e) {
-                System.out.println("❌ Invalid input: Member ID must be a number");
-                return;
-            }
-            
-            // Verify book exists and is available
-            BookDao bookDao = new BookDaoImpl();
-            Book book = bookDao.getBookById(bookId);
-            if (book == null) {
-                System.out.println("❌ No book found with ID: " + bookId);
-                return;
-            }
-            
-            if (book.getAvailableCopies() <= 0) {
-                System.out.println("❌ Sorry, there are no available copies of this book");
+                System.out.println(" Invalid input: Member ID must be a number");
                 return;
             }
             
             // Verify member exists
-            MemberDao memberDao = new MemberDaoImpl();
             Member member = memberDao.getMemberById(memberId);
             if (member == null) {
-                System.out.println("❌ No member found with ID: " + memberId);
+                System.out.println(" No member found with ID: " + memberId);
+                return;
+            }
+            
+            // Show the selected member details
+            System.out.println("\n===  Selected Member Details ===");
+            System.out.println("Name: " + member.getName());
+            System.out.println("Email: " + member.getEmail());
+            System.out.println("Phone: " + member.getPhone());
+            
+            // Confirm borrowing
+            System.out.print("\nConfirm book borrowing (y/n): ");
+            String confirm = scanner.nextLine().toLowerCase();
+            if (!confirm.equals("y") && !confirm.equals("yes")) {
+                System.out.println(" Book borrowing cancelled");
                 return;
             }
             
@@ -69,18 +144,18 @@ public class BorrowingService {
             BorrowingDao borrowingDao = new BorrowingDaoImpl();
             borrowingDao.borrowBook(bookId, memberId);
             
-            System.out.println("✅ Book borrowed successfully!");
+            System.out.println(" Book borrowed successfully!");
             System.out.println("Book: " + book.getTitle() + " | Member: " + member.getName());
             Logger.log("Book (ID: " + bookId + ") borrowed by member (ID: " + memberId + ")");
         } catch (DatabaseException e) {
-            System.out.println("❌ Error processing borrowing: " + e.getMessage());
+            System.out.println(" Error processing borrowing: " + e.getMessage());
             Logger.log("Error processing borrowing: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("❌ Unexpected error: " + e.getMessage());
+            System.out.println(" Unexpected error: " + e.getMessage());
             Logger.log("Unexpected error in borrowing process: " + e.getMessage());
         }
     }
-    
+    // Method to return a book to the library
     public static void returnBook() {
         try {
             System.out.print("Enter borrowing record ID: ");
@@ -90,7 +165,7 @@ public class BorrowingService {
             try {
                 recordId = Integer.parseInt(recordIdInput);
             } catch (NumberFormatException e) {
-                System.out.println("❌ Invalid input: Record ID must be a number");
+                System.out.println(" Invalid input: Record ID must be a number");
                 return;
             }
             
@@ -99,12 +174,12 @@ public class BorrowingService {
             BorrowingRecord record = borrowingDao.getBorrowingRecordById(recordId);
             
             if (record == null) {
-                System.out.println("❌ No borrowing record found with ID: " + recordId);
+                System.out.println(" No borrowing record found with ID: " + recordId);
                 return;
             }
             
             if (record.getReturnDate() != null) {
-                System.out.println("❌ This book has already been returned on: " + record.getReturnDate());
+                System.out.println(" This book has already been returned on: " + record.getReturnDate());
                 return;
             }
             
@@ -117,18 +192,19 @@ public class BorrowingService {
             Book book = bookDao.getBookById(record.getBookId());
             Member member = memberDao.getMemberById(record.getMemberId());
             
-            System.out.println("✅ Book returned successfully!");
+            System.out.println(" Book returned successfully!");
             System.out.println("Book: " + (book != null ? book.getTitle() : "ID: " + record.getBookId()));
             System.out.println("Member: " + (member != null ? member.getName() : "ID: " + record.getMemberId()));
             Logger.log("Book return processed for record ID: " + recordId);
         } catch (DatabaseException e) {
-            System.out.println("❌ Error processing return: " + e.getMessage());
+            System.out.println(" Error processing return: " + e.getMessage());
             Logger.log("Error processing return: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("❌ Unexpected error: " + e.getMessage());
+            System.out.println(" Unexpected error: " + e.getMessage());
             Logger.log("Unexpected error in return process: " + e.getMessage());
         }
     }
+    // Method to display all borrowing records in the library
     public static void displayAllBorrowingRecords() {
     try {
         BorrowingDao borrowingDao = new BorrowingDaoImpl();
@@ -175,14 +251,14 @@ public class BorrowingService {
         System.out.println("Total records: " + records.size());
         Logger.log("Retrieved and displayed " + records.size() + " borrowing records");
     } catch (DatabaseException e) {
-        System.out.println("❌ Error retrieving borrowing records: " + e.getMessage());
+        System.out.println(" Error retrieving borrowing records: " + e.getMessage());
         Logger.log("Error retrieving borrowing records: " + e.getMessage());
     } catch (Exception e) {
-        System.out.println("❌ Unexpected error: " + e.getMessage());
+        System.out.println(" Unexpected error: " + e.getMessage());
         Logger.log("Unexpected error retrieving borrowing records: " + e.getMessage());
     }
 }
-
+// Method to display borrowing records by ID in the library
 public static void displayBorrowingRecordsbyId() {
     try {
         System.out.print("Enter borrowing record ID: ");
@@ -192,7 +268,7 @@ public static void displayBorrowingRecordsbyId() {
         try {
             recordId = Integer.parseInt(recordIdInput);
         } catch (NumberFormatException e) {
-            System.out.println("❌ Invalid input: Record ID must be a number");
+            System.out.println(" Invalid input: Record ID must be a number");
             return;
         }
         
@@ -200,7 +276,7 @@ public static void displayBorrowingRecordsbyId() {
         BorrowingRecord record = borrowingDao.getBorrowingRecordById(recordId);
         
         if (record == null) {
-            System.out.println("❌ No borrowing record found with ID: " + recordId);
+            System.out.println(" No borrowing record found with ID: " + recordId);
             return;
         }
         
@@ -241,13 +317,14 @@ public static void displayBorrowingRecordsbyId() {
         
         Logger.log("Retrieved and displayed details for borrowing record ID: " + recordId);
     } catch (DatabaseException e) {
-        System.out.println("❌ Error retrieving borrowing record: " + e.getMessage());
+        System.out.println(" Error retrieving borrowing record: " + e.getMessage());
         Logger.log("Error retrieving borrowing record: " + e.getMessage());
     } catch (Exception e) {
-        System.out.println("❌ Unexpected error: " + e.getMessage());
+        System.out.println(" Unexpected error: " + e.getMessage());
         Logger.log("Unexpected error retrieving borrowing record: " + e.getMessage());
     }
 }
+// method to display all returned records in the library
     public static void displayReturnedRecordss() {
     try {
         BorrowingDao borrowingDao = new BorrowingDaoImpl();
@@ -293,10 +370,10 @@ public static void displayBorrowingRecordsbyId() {
         System.out.println("Total records: " + records.size());
         Logger.log("Retrieved and displayed " + records.size() + " returned records");
     } catch (DatabaseException e) {
-        System.out.println("❌ Error retrieving returned records: " + e.getMessage());
+        System.out.println(" Error retrieving returned records: " + e.getMessage());
         Logger.log("Error retrieving returned records: " + e.getMessage());
     } catch (Exception e) {
-        System.out.println("❌ Unexpected error: " + e.getMessage());
+        System.out.println(" Unexpected error: " + e.getMessage());
         Logger.log("Unexpected error retrieving returned records: " + e.getMessage());
     }
 }

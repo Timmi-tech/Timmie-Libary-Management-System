@@ -16,6 +16,7 @@ import Utils.Logger;
 
 public class BorrowingDaoImpl implements BorrowingDao {
 
+
    @Override
     public void borrowBook(int bookId, int memberId) throws DatabaseException {
     String borrowQuery = "INSERT INTO borrowing_records (book_id, member_id, borrow_date) VALUES (?, ?, CURRENT_DATE)";
@@ -75,7 +76,6 @@ public class BorrowingDaoImpl implements BorrowingDao {
         // Close resources
         DatabaseUtils.closeResources(updateStmt, null);
         DatabaseUtils.closeResources(borrowStmt, null);
-        // Note: We don't close the connection since it's managed by the singleton
     }
 }
 
