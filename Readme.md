@@ -96,7 +96,7 @@ Update DatabaseConnection.java with your database credentials:
        private static final String URL = "jdbc:postgresql://localhost:5432/library_db";
        private static final String USER = "your_username";
        private static final String PASSWORD = "your_password";
-       // ...
+       // ... update with your credentials
    }
 ```
 
