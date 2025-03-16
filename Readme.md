@@ -43,8 +43,8 @@ A comprehensive Java-based library Management System designed to manage books, m
 1. **Clone the Repository**  
    
 ```bash
-   git clone https://github.com/Timmi-tech/Timmie-Library-Management-System.git
-   cd Timmie-Library-Management-System
+   git clone https://github.com/Timmi-tech/Timmie-Libary-Management-System
+   cd Timmie-Libary-Management-System
 ```
 
 ### Database Setup
