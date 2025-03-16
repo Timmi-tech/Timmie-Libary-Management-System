@@ -1,6 +1,6 @@
 # Timmie Libary Management System
 
-A comprehensive Java-based Library Management System designed to manage books, members, and borrowing records. Built using JDBC with the DAO pattern, file handling, and Java Collections Framework.
+A comprehensive Java-based Libary Management System designed to manage books, members, and borrowing records. Built using JDBC with the DAO pattern, file handling, and Java Collections Framework.
 
 ![Java](https://img.shields.io/badge/Java-17-blue)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)
