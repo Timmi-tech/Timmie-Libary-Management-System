@@ -20,7 +20,7 @@ public class MemberManagement {
         Member member = new Member(memberId, name, email, phone);
         library.members.add(member);
         Logger.log("Added new member: " + member.getName());
-        System.out.println("✅ Member added successfully!");
+        System.out.println(" Member added successfully!");
         return member;
     }
     
