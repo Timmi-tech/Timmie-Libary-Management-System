@@ -388,7 +388,7 @@ public class LibraryMenu {
         Member member = memberManager.getMemberById(memberId);
         
         if (member == null) {
-            System.out.println("❌ Member not found!");
+            System.out.println("Member not found!");
             return;
         }
         
@@ -413,9 +413,9 @@ public class LibraryMenu {
         }
         
         if (memberManager.updateMember(memberId, name, email, phone)) {
-            System.out.println("✅ Member updated successfully!");
+            System.out.println("Member updated successfully!");
         } else {
-            System.out.println("❌ Failed to update member!");
+            System.out.println("Failed to update member!");
         }
     }
 
@@ -427,9 +427,9 @@ public class LibraryMenu {
         int memberId = getIntInput();
         
         if (memberManager.deleteMember(memberId)) {
-            System.out.println("✅ Member deleted successfully!");
+            System.out.println("Member deleted successfully!");
         } else {
-            System.out.println("❌ Cannot delete member! They might have borrowed books or not found.");
+            System.out.println("Cannot delete member! They might have borrowed books or not found.");
         }
     }
 
@@ -468,7 +468,7 @@ public class LibraryMenu {
             }
             
         } else {
-            System.out.println("❌ Member not found!");
+            System.out.println("Member not found!");
         }
     }
 
@@ -556,7 +556,7 @@ public class LibraryMenu {
             BorrowingRecord record = borrowingManager.borrowBook(bookId, memberId);
             
             if (record != null) {
-                System.out.println("✅ Book borrowed successfully!");
+                System.out.println("Book borrowed successfully!");
                 
                 // Get book and member details
                 Book book = null;
@@ -581,7 +581,7 @@ public class LibraryMenu {
                     System.out.println("Borrow Date: " + record.getBorrowDate());
                 }
             } else {
-                System.out.println("❌ Failed to borrow book! Book might not be available or invalid member/book ID.");
+                System.out.println("Failed to borrow book! Book might not be available or invalid member/book ID.");
             }
         }
     
@@ -595,7 +595,7 @@ public class LibraryMenu {
             int bookId = getIntInput();
             
             if (borrowingManager.returnBook(bookId)) {
-                System.out.println("✅ Book returned successfully!");
+                System.out.println("Book returned successfully!");
                 
                 // Get book details
                 Book book = null;
@@ -610,7 +610,7 @@ public class LibraryMenu {
                     System.out.println("Book: " + book.getTitle() + " has been returned.");
                 }
             } else {
-                System.out.println("❌ Failed to return book! Book might not be borrowed or invalid book ID.");
+                System.out.println("Failed to return book! Book might not be borrowed or invalid book ID.");
             }
         }
     
